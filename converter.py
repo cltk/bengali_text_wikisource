@@ -1,6 +1,8 @@
 import os, re
 import json
 import pdb
+import collections
+from django.utils.text import slugify
 
 sourceLink = 'https://bn.wikisource.org/wiki/%E0%A6%AA%E0%A7%8D%E0%A6%B0%E0%A6%A7%E0%A6%BE%E0%A6%A8_%E0%A6%AA%E0%A6%BE%E0%A6%A4%E0%A6%BE'
 source = 'Wikisource'
@@ -25,8 +27,9 @@ works = [{
 
 
 def main():
+	if not os.path.exists('cltk_json'):
+		os.makedirs('cltk_json')
 
-	# Build json docs from txt files
 	for root, dirs, files in os.walk("."):
 		path = root.split('/')
 		for fname in files:
@@ -43,9 +46,9 @@ def main():
 
 
 	for work in works:
-		fname = work['source'] + '__' + work['englishTitle'] + '__' + work['author'] + '.json'
+		fname = slugify(work['source']) + '__' + slugify(work['englishTitle'][0:140]) + '__' + slugify(work['language']) + '.json'
 		fname = fname.replace(" ", "")
-		with open(fname, 'w') as f:
+		with open('cltk_json/' + fname, 'w') as f:
 			json.dump(work, f)
 
 if __name__ == '__main__':
