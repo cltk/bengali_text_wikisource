@@ -18,6 +18,14 @@ works = [{
 }, {
 	'originalTitle': "শকুন্তলা",
 	'englishTitle': "Shakuntala",
+	'author': "Abanindranath Tagore",
+	'source': source,
+	'sourceLink': sourceLink,
+	'language': 'bengali',
+	'text': {},
+},  {
+	'originalTitle': "গীতাঞ্জলি",
+	'englishTitle': "Gitanjali",
 	'author': "Rabindranath Tagore",
 	'source': source,
 	'sourceLink': sourceLink,
