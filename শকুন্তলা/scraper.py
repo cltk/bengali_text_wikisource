@@ -23,8 +23,9 @@ for segment in segment_names:
     soup = BeautifulSoup(r.content,"lxml")
     stats = soup.find_all("p")
     for stat in stats:
-        data = stat.text.rstrip().lstrip()
+        data = stat.text + "\n" 
         print(data)
         file = open(fileName,'a+')
         file.write(data)
+        time.sleep(2)
         
